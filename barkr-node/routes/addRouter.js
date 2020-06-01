@@ -16,13 +16,12 @@ addRouter.route('/add/:dogId')
 })
 // Post vs Put will go in back end
 .post((req, res) => {
-    res.statusCode = 403;
-    res.end(`POST operation not supported on /dogs/${req.params.dogId}`);
+    res.end(`Created dog with ID: ${req.params.dogId}`);
 })
 .put((req, res) => {
     res.write(`Updating the dog: ${req.params.dogId}\n`);
-    res.end(`Will update the dog: ${req.body.name}
-        with description: ${req.body.description}`);
+    res.end(`Will update the property: ${req.body.property}
+        with value: ${req.body.value}`);
 })
 .delete((req, res) => {
     res.end(`Deleting dog: ${req.params.dogId}`);
