@@ -1,14 +1,57 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const commentSchema = new Schema({
-    rating: {
-        type:Number,
-        min:1,
-        max:5,
+const siblingSchema = new Schema({
+// number of siblings will vary from 0 on up
+    name: {
+        type:String,
         required:true
     },
-    text: {
+    id: {
+        type:String,
+        required:true
+    }
+}, {
+    timestamps:true
+});
+
+const commandSchema = new Schema({
+    name: {
+        type:String,
+        required:true
+    },
+    image: {
+        type:String,
+        required:true
+    },
+    description: {
+        type:String,
+        required:true
+    }
+}, {
+    timestamps:true
+});
+
+const routineSchema = new Schema({
+    detail: {
+        type:String,
+        required:true
+    }
+}, {
+    timestamps:true
+});
+
+const suppliesSchema = new Schema({
+    detail: {
+        type:String,
+        required:true
+    }
+}, {
+    timestamps:true
+});
+
+const notesSchema = new Schema({
+    content: {
         type:String,
         required:true
     },
@@ -18,70 +61,56 @@ const commentSchema = new Schema({
     }
 }, {
     timestamps:true
-})
-
-const campsiteSchema = new Schema({
-    name: {
-        type:String,
-        required:true,
-        unique:true
-    },
-    description: {
-        type:String,
-        required:true
-    },
-    image: {
-        type:String,
-        required:true
-    },
-    elevation: {
-        type:Number,
-        required:true
-    },
-    cost: {
-        type:Currency,
-        required:true,
-        min:0
-    },
-    featured: {
-        type:Boolean,
-        default:false
-    },
-    comments: [commentSchema]
-}, {
-    timestamps:true
 });
 
 // Dog code starts here
 
-const dogSchema = new Schema({
+const contactsSchema = new Schema({
     name: {
         type:String,
-        required:true,
-        unique:true
+        required:true
     },
-    description: {
+    bio: {
+        type:String,
+        required:false
+    },
+    sex: {
         type:String,
         required:true
     },
-    image: {
+    breed: {
         type:String,
         required:true
     },
-    elevation: {
+    yearBorn: {
         type:Number,
+        required:false
+    },
+    from: {
+        type:String,
+        required:false
+    },
+    siblings: [siblingSchema],
+    owner: {
+        type:String,
         required:true
     },
-    cost: {
-        type:Currency,
-        required:true,
-        min:0
+    thumbnailPic: {
+        type:String,
+        required:true
     },
-    featured: {
-        type:Boolean,
-        default:false
+    profilePic: {
+        type:String,
+        required:true
     },
-    comments: [commentSchema]
+    commands: [commandSchema],
+    zip: {
+        type:Number,
+        required:false
+    },
+    supplies: [suppliesSchema],
+    notes: [notesSchema],
+    contacts: [contactsSchema]
 }, {
     timestamps:true
 });
@@ -101,7 +130,8 @@ const dogSchema = new Schema({
 //         }
 //     ],
 //     "owner": "",
-//     "pic": [
+//     NOTE: CONVERT PICS FROM SUBDOCS TO JUST thumbnailPic and profilePic fields
+//      "pic": [
 //         {
 //             "type":"thumbnail",
 //             "img": ""
@@ -111,6 +141,7 @@ const dogSchema = new Schema({
 //             "img":""
 //         }
 //     ],
+//      NOTE: COMMAND ID IS NO LONGER NEEDED
 //     "commands": [
 //         {
 //             "id":0,
@@ -120,12 +151,14 @@ const dogSchema = new Schema({
 //         },
 //     ],    
 //     "ZIP":"21202",
+//      NOTE: ROUTINE ID NO LONGER NEEDED
 //     "routine": [
 //         {
 //             "id":0,
 //             "detail": ""
 //         },
 //     ],
+//      NOTE: SUPPLIES ID NO LONGER NEEDED
 //     "supplies": [
 //         {
 //             "id":0,
