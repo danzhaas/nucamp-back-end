@@ -1,20 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const siblingSchema = new Schema({
-// number of siblings will vary from 0 on up
-    name: {
-        type:String,
-        required:true
-    },
-    id: {
-        type:String,
-        required:true
-    }
-}, {
-    timestamps:true
-});
-
 const commandSchema = new Schema({
     name: {
         type:String,
@@ -65,7 +51,7 @@ const notesSchema = new Schema({
 
 // Dog code starts here
 
-const contactsSchema = new Schema({
+const dogSchema = new Schema({
     name: {
         type:String,
         required:true
@@ -110,92 +96,48 @@ const contactsSchema = new Schema({
     },
     supplies: [suppliesSchema],
     notes: [notesSchema],
-    contacts: [contactsSchema]
 }, {
     timestamps:true
 });
 
-// {
-//     "id":1,
-//     "name":""
-//     "bio":"",
-//     "sex": "",
-//     "breed": "",
-//     "yearBorn": "",
-//     "from": "",
-//     "siblings": [
-//         {
-//             "name":"",
-//             "id":""
-//         }
-//     ],
-//     "owner": "",
-//     NOTE: CONVERT PICS FROM SUBDOCS TO JUST thumbnailPic and profilePic fields
-//      "pic": [
-//         {
-//             "type":"thumbnail",
-//             "img": ""
-//         },
-//         {
-//             "type":"profilePic",
-//             "img":""
-//         }
-//     ],
-//      NOTE: COMMAND ID IS NO LONGER NEEDED
+//  Dog data
+//     "id":1,              Not input - hidden
+//     "ownerId"            Not input - hidden
+//     "name":""            Input type text
+//     "bio":"",            Input type textarea
+//     "sex": "",           Input type select
+//     "breed": "",         Input type select (note: use autosuggest)
+//     "yearBorn": "",      Input type text
+//     "thumbnailPic":""    Input file 
+//     "profilePic":""      Input file 
 //     "commands": [
 //         {
-//             "id":0,
-//             "name":"",
-//             "image":"",
-//             "description":""
+//             "id":"",             Not input - hidden
+//             "name":"",           Input type text    
+//             "image":"",          Input file
+//             "description":""     Input type text
 //         },
 //     ],    
-//     "ZIP":"21202",
-//      NOTE: ROUTINE ID NO LONGER NEEDED
 //     "routine": [
 //         {
-//             "id":0,
-//             "detail": ""
+//             "id":0,              Not input - hidden
+//             "detail": ""         Input type text
 //         },
 //     ],
-//      NOTE: SUPPLIES ID NO LONGER NEEDED
 //     "supplies": [
 //         {
-//             "id":0,
-//             "detail": ""
+//             "id":0,              Not input - hidden
+//             "detail": ""         Input type text
 //         },
 //     ],
 //     "notes": [
 //         {
-//             "id":0,
-//             "content":""
-//         }
-//     ],    
-//     "contacts": [
-//         {
-//             "id":0,
-//             "tabName":"Owner",
-//             "tabContent":"",
-//             "tabPhone":"",
-//             "emergencyVet": false
+//             "id":0,              Not input - hidden
+//             "content": ""         Input type text
 //         },
-//         {
-//             "id":1,
-//             "tabName":"Primary Vet",
-//             "tabContent":"",
-//             "tabPhone":"",
-//             "emergencyVet": false
-//         },
-//         {
-//             "id":2,
-//             "tabName":"Emergency Vet",
-//             "tabContent":"",
-//             "tabPhone":"",
-//             "emergencyVet": true
-//         }
 //     ]
 // }
 
-const Campsite = mongoose.model('Campsite', campsiteSchema);
+const Dog = mongoose.model('Dog', dogSchema);
 
-module.exports = Campsite;
+module.exports = Dog;
