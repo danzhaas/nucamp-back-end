@@ -1,13 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const viewRouter = express.Router();
+const meetRouter = express.Router();
 
-viewRouter.use(bodyParser.json());
+meetRouter.use(bodyParser.json());
 
-
-viewRouter.route('/view/*/:dogId')
-//viewRouter.route('/view/dog-home/:dogId')
+meetRouter.route('/meet/:dogId/*')
+// meetRouter.route('/meet/*/:dogId')
+//meetRouter.route('/meet/dog-home/:dogId')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
@@ -19,19 +19,19 @@ viewRouter.route('/view/*/:dogId')
 })
 .post((req, res) => {
     res.statusCode = 403;
-    res.end(`POST operation not supported on /view`);
+    res.end(`POST operation not supported on /meet`);
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /view');
+    res.end('PUT operation not supported on /meet');
 })
 .delete((req, res) => {
     res.statusCode = 403;
-    res.end('DELETE operation not supported on /view');
+    res.end('DELETE operation not supported on /meet');
 });
 
 
-// viewRouter.route('/view/talk/:dogId')
+// meetRouter.route('/meet/talk/:dogId')
 // .all((req, res, next) => {
 //     res.statusCode = 200;
 //     res.setHeader('Content-Type', 'text/plain');
@@ -43,19 +43,19 @@ viewRouter.route('/view/*/:dogId')
 // })
 // .post((req, res) => {
 //     res.statusCode = 403;
-//     res.end(`POST operation not supported on /view`);
+//     res.end(`POST operation not supported on /meet`);
 // })
 // .put((req, res) => {
 //     res.statusCode = 403;
-//     res.end('PUT operation not supported on /view');
+//     res.end('PUT operation not supported on /meet');
 // })
 // .delete((req, res) => {
 //     res.statusCode = 403;
-//     res.end('DELETE operation not supported on /view');
+//     res.end('DELETE operation not supported on /meet');
 // });
 
 
-// viewRouter.route('/view/adventure/:dogId')
+// meetRouter.route('/meet/adventure/:dogId')
 // .all((req, res, next) => {
 //     res.statusCode = 200;
 //     res.setHeader('Content-Type', 'text/plain');
@@ -67,19 +67,19 @@ viewRouter.route('/view/*/:dogId')
 // })
 // .post((req, res) => {
 //     res.statusCode = 403;
-//     res.end(`POST operation not supported on /view`);
+//     res.end(`POST operation not supported on /meet`);
 // })
 // .put((req, res) => {
 //     res.statusCode = 403;
-//     res.end('PUT operation not supported on /view');
+//     res.end('PUT operation not supported on /meet');
 // })
 // .delete((req, res) => {
 //     res.statusCode = 403;
-//     res.end('DELETE operation not supported on /view');
+//     res.end('DELETE operation not supported on /meet');
 // });
 
 
-// viewRouter.route('/view/care/:dogId')
+// meetRouter.route('/meet/care/:dogId')
 // .all((req, res, next) => {
 //     res.statusCode = 200;
 //     res.setHeader('Content-Type', 'text/plain');
@@ -91,15 +91,15 @@ viewRouter.route('/view/*/:dogId')
 // })
 // .post((req, res) => {
 //     res.statusCode = 403;
-//     res.end(`POST operation not supported on /view`);
+//     res.end(`POST operation not supported on /meet`);
 // })
 // .put((req, res) => {
 //     res.statusCode = 403;
-//     res.end('PUT operation not supported on /view');
+//     res.end('PUT operation not supported on /meet');
 // })
 // .delete((req, res) => {
 //     res.statusCode = 403;
-//     res.end('DELETE operation not supported on /view');
+//     res.end('DELETE operation not supported on /meet');
 // });
 
-module.exports = viewRouter;
+module.exports = meetRouter;

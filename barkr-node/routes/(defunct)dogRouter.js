@@ -27,4 +27,4 @@ addRouter.route('/add/:dogId')
     res.end(`Deleting dog: ${req.params.dogId}`);
 });
 
-module.exports = addRouter;
+module.exports = formDogRouter;

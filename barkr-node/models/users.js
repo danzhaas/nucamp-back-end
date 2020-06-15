@@ -22,7 +22,7 @@ const contactsSchema = new Schema({
     timestamps:true
 });
 
-const ownerSchema = new Schema({
+const userSchema = new Schema({
     name: {
         type:String,
         required:true
@@ -56,18 +56,27 @@ const ownerSchema = new Schema({
     timestamps:true
 });
 
-// Owner data
+// User data
+//     id                   Not input - hidden
 //     name:                input type text
 //     email:               input type email
 //     password:            input type password
 //     zip:                 input type text
 //     phone:               input type text
-//     dogsOwned:           Not input - hidden
-//     dogsFavorited:       Not input - hidden
+//     dogsOwned: [         Not input - hidden
+//          {
+//              "_id":"fjfjfjjf"
+//          }
+//      ],
+//     dogsFavorited: [     Not input - hidden
+//          {
+//              "_id":"fjfjfjjf"
+//          }
+//      ],
 //     "contacts": [        
 //         {
 //             "id":0,
-//             "contactType":"Owner",       input dropdown selections primary vet, emergency vet
+//             "contactType":"User",       input dropdown selections primary vet, emergency vet
 //             "name":"",                   input type text
 //             "address":"",                input type text
 //             "phone": ""                  input type text
@@ -88,6 +97,6 @@ const ownerSchema = new Schema({
 //         }
 //     ]
 
-const Owner = mongoose.model('Owner', ownerSchema);
+const User = mongoose.model('User', userSchema);
 
-module.exports = Owner;
+module.exports = User;
