@@ -1,6 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const dogsOwnedSchema = new Schema({
+    id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Dog'
+    }
+});
+
+const dogsFavoritedSchema = new Schema({
+    id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Dog'
+        }
+});
+
 const contactsSchema = new Schema({
     contactType: {
         type:String,
@@ -43,14 +57,8 @@ const userSchema = new Schema({
         type:Number,
         required:false
     },
-    dogsOwned: {
-        type: ObjectId,
-        required:false
-    },
-    dogsFavorited: {
-        type: ObjectId,
-        required:false
-    }, 
+    dogsOwned: [dogsOwnedSchema],
+    dogsFavorited: [dogsFavoritedSchema],
     contacts: [contactsSchema]
 }, {
     timestamps:true
@@ -65,12 +73,12 @@ const userSchema = new Schema({
 //     phone:               input type text
 //     dogsOwned: [         Not input - hidden
 //          {
-//              "_id":"fjfjfjjf"
+//              "id":"fjfjfjjf"
 //          }
 //      ],
 //     dogsFavorited: [     Not input - hidden
 //          {
-//              "_id":"fjfjfjjf"
+//              "id":"fjfjfjjf"
 //          }
 //      ],
 //     "contacts": [        

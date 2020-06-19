@@ -5,7 +5,7 @@ const landingRouter = express.Router();
 
 landingRouter.use(bodyParser.json());
 
-landingRouter.route('/landing')
+landingRouter.route('/')
 .all((req, res, next) => {
     res.setHeader('Content-Type', 'text/plain');
     next();

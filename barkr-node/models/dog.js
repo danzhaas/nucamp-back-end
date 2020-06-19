@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const siblingSchema = new Schema({
+    dogId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+})
+
 const commandSchema = new Schema({
     name: {
         type:String,
@@ -52,6 +59,10 @@ const notesSchema = new Schema({
 // Dog code starts here
 
 const dogSchema = new Schema({
+    ownerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     name: {
         type:String,
         required:true
@@ -101,7 +112,7 @@ const dogSchema = new Schema({
 });
 
 //  Dog data
-//     "id":1,              Not input - hidden
+//     "_id":1,              Not input - hidden
 //     "ownerId"            Not input - hidden
 //     "name":""            Input type text
 //     "bio":"",            Input type textarea

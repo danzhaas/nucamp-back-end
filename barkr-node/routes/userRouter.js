@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const addRouter = express.Router();
+const userRouter = express.Router();
 
-addRouter.use(bodyParser.json());
+userRouter.use(bodyParser.json());
 
-addRouter.route('/add/:userId')
+userRouter.route('/add/:userId')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');

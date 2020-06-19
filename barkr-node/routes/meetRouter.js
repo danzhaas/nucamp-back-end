@@ -6,8 +6,6 @@ const meetRouter = express.Router();
 meetRouter.use(bodyParser.json());
 
 meetRouter.route('/meet/:dogId/*')
-// meetRouter.route('/meet/*/:dogId')
-//meetRouter.route('/meet/dog-home/:dogId')
 .all((req, res, next) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
