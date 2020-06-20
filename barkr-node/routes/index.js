@@ -1,18 +1,24 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const landingRouter = express.Router();
+const indexRouter = express.Router();
 
-landingRouter.use(bodyParser.json());
+indexRouter.use(bodyParser.json());
 
-landingRouter.route('/')
+indexRouter.route('/')
 .all((req, res, next) => {
     res.setHeader('Content-Type', 'text/plain');
     next();
 })
+// .get((req, res)  => {
+//     res.statusCode = 200;
+//     res.end('Sending landing page to you');
+// })
 .get((req, res)  => {
-    res.statusCode = 200;
-    res.end('Will send landing page to you');
+    dog.find()
+    .then(dogs)
+    res.status(200).json(Dog);
+    res.end(`Will send details of all dogs to you`)
 })
 //  BECAUSE REGISTER/LOGIN MODAL IS HERE, WILL HAVE TO SUPPORT POST
 .post((req, res) => {
@@ -22,15 +28,15 @@ landingRouter.route('/')
     } else if (req.body.login) {
         //load userId with corresponding email and password
     }
-    res.end(`POST operation not supported on /landing`);
+    res.end(`POST operation not supported on landing page`);
 })
 .put((req, res) => {
     res.statusCode = 403;
-    res.end('PUT operation not supported on /landing');
+    res.end('PUT operation not supported on landing page');
 })
 .delete((req, res) => {
     res.statusCode = 403;
-    res.end('DELETE operation not supported on /landing');
+    res.end('DELETE operation not supported on landing page');
 });
 
-module.exports = landingRouter;
+module.exports = indexRouter;
